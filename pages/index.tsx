@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import AnimatedBox from "../components/AnimatedBox";
 import CameraOrbitController from "../components/CameraOrbitController";
 
