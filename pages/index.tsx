@@ -1,18 +1,25 @@
 import type { NextPage } from "next";
 import { Canvas } from "@react-three/fiber";
 import AnimatedBox from "../components/AnimatedBox";
-import CameraOrbitController from "../components/CameraOrbitController";
+import { OrbitControls, Stats } from "@react-three/drei";
 
 const Home: NextPage = () => {
-  const testing = false;
+  const testing = true;
   return (
     <div className="container">
       <Canvas>
-        <axesHelper visible={testing} args={[2]} />
-        <CameraOrbitController />
+        {testing ? <Stats /> : null}
+        {testing ? (
+          <axesHelper /*creates an axes helper on the object */ args={[2]} />
+        ) : null}
+        {testing ? (
+          <gridHelper /*creates an grid in the scene */ args={[10]} />
+        ) : null}
+
+        <OrbitControls />
         <ambientLight intensity={0.1} />
         <directionalLight color="red" position={[0, 0, 5]} />
-        <AnimatedBox />
+        <AnimatedBox isTesting={testing} />
       </Canvas>
     </div>
   );
