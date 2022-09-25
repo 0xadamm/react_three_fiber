@@ -1,22 +1,30 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
+import { useHelper } from "@react-three/drei";
+import { BoxHelper } from "three/src/helpers/BoxHelper";
 
-const AnimatedBox = () => {
-  //using ref
+type Props = {
+  isTesting: boolean;
+};
+
+const AnimatedBox: React.FC<Props> = ({ isTesting }) => {
   const meshRef = useRef<THREE.Mesh>(null);
-  // executes on every frame
+
+  {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    isTesting ? useHelper(meshRef, BoxHelper, "cyan") : null;
+  }
+
   useFrame(() => {
     console.log("Hi");
-    // checks if mesh exists
     if (meshRef.current) {
-      // adds rotation to x axis
       meshRef.current.rotation.x += 0.01;
     }
   });
 
   return (
     // create box geometry & material
-    <mesh ref={meshRef} scale={[0.5, 0.5, 0.5]}>
+    <mesh visible={true} ref={meshRef} scale={[0.5, 0.5, 0.5]}>
       <boxGeometry attach={"geometry"} />
       <meshStandardMaterial />
     </mesh>
