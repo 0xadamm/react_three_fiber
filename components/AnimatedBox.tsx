@@ -10,10 +10,7 @@ type Props = {
 const AnimatedBox: React.FC<Props> = ({ isTesting }) => {
   const meshRef = useRef<THREE.Mesh>(null);
 
-  {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    isTesting ? useHelper(meshRef, BoxHelper, "cyan") : null;
-  }
+  useHelper(isTesting && meshRef, BoxHelper, "cyan");
 
   useFrame(() => {
     console.log("Hi");
