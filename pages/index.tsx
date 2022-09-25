@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { Canvas } from "@react-three/fiber";
-import AnimatedBox from "../components/AnimatedBox";
 import { OrbitControls, Stats } from "@react-three/drei";
+import TexturedSpheres from "../components/TexturedSpheres";
 
 const Home: NextPage = () => {
   const testing = true;
@@ -17,9 +17,9 @@ const Home: NextPage = () => {
         ) : null}
 
         <OrbitControls />
-        <ambientLight intensity={0.1} />
-        <directionalLight color="red" position={[0, 0, 5]} />
-        <AnimatedBox isTesting={testing} />
+        <ambientLight intensity={0.3} />
+        <directionalLight position={[0, 5, 5]} />
+        <TexturedSpheres />
       </Canvas>
     </div>
   );
