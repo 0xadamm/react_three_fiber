@@ -1,23 +1,10 @@
 import type { NextPage } from "next";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stats } from "@react-three/drei";
-import TexturedSpheres from "../components/TexturedSpheres";
 import Lights from "../components/Lights";
 import Ground from "../components/Ground";
-import { useLoader } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-
-const Tree = () => {
-  const model = useLoader(GLTFLoader, "./models/tree.glb");
-  console.log(model);
-  model.scene.traverse(object => {
-    if (object.isObject3D) {
-      object.castShadow = true;
-    }
-  });
-  return <primitive object={model.scene} />;
-};
-
+import Trees from "../components/Trees";
+import { TreeModel } from "../components/TreeJSX";
 const Home: NextPage = () => {
   const testing = true;
   return (
@@ -31,8 +18,8 @@ const Home: NextPage = () => {
           <gridHelper /*creates an grid in the scene */ args={[10, 10]} />
         ) : null}
         <OrbitControls />
-        <TexturedSpheres />
-        <Tree />
+        <Trees />
+        <TreeModel position={[5, 0, 0]} />
         <Lights />
         <Ground />
       </Canvas>
