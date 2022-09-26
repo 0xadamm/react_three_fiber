@@ -7,26 +7,15 @@ const TexturedSpheres = () => {
   const roughnessMap = useTexture("./textures/metal_plate_rough_1k.png");
   return (
     <>
-      <mesh scale={[0.5, 0.5, 0.5]} position={[-1, 0, 0]}>
-        <sphereGeometry />
-        <meshStandardMaterial map={map} />
-      </mesh>
-      <mesh scale={[0.5, 0.5, 0.5]} position={[0, 0, 0]}>
-        <sphereGeometry />
+      <mesh scale={[0.5, 0.5, 0.5]} position={[0, 1, 0]} castShadow>
+        <sphereGeometry args={[1, 1000, 1000]} />
         <meshStandardMaterial
+          // wireframe
           map={map}
           normalMap={normalMap}
           roughnessMap={roughnessMap}
-        />
-      </mesh>
-      <mesh scale={[0.5, 0.5, 0.5]} position={[1, 0, 0]}>
-        <sphereGeometry args={[1, 2000, 2000]} />
-        <meshStandardMaterial
-          map={map}
-          normalMap={normalMap}
-          roughnessMap={roughnessMap}
-          displacementMap={displacementMap}
-          displacementScale={0.1}
+          // displacementMap={displacementMap}
+          // displacementScale={0.09}
         />
       </mesh>
     </>
