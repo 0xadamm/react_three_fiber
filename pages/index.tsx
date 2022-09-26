@@ -2,24 +2,25 @@ import type { NextPage } from "next";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stats } from "@react-three/drei";
 import TexturedSpheres from "../components/TexturedSpheres";
+import Lights from "../components/Lights";
+import Ground from "../components/Ground";
 
 const Home: NextPage = () => {
   const testing = true;
   return (
     <div className="container">
-      <Canvas>
+      <Canvas shadows camera={{ position: [0, 10, 0] }}>
         {testing ? <Stats /> : null}
         {testing ? (
           <axesHelper /*creates an axes helper on the object */ args={[2]} />
         ) : null}
         {testing ? (
-          <gridHelper /*creates an grid in the scene */ args={[10]} />
+          <gridHelper /*creates an grid in the scene */ args={[10, 10]} />
         ) : null}
-
         <OrbitControls />
-        <ambientLight intensity={0.3} />
-        <directionalLight position={[0, 5, 5]} />
         <TexturedSpheres />
+        <Lights />
+        <Ground />
       </Canvas>
     </div>
   );
