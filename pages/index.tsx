@@ -4,7 +4,7 @@ import { OrbitControls, Stats } from "@react-three/drei";
 import Lights from "../components/Lights";
 import Ground from "../components/Ground";
 import Trees from "../components/Trees";
-import { TreeModel } from "../components/TreeJSX";
+
 const Home: NextPage = () => {
   const testing = true;
   return (
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         ) : null}
         <OrbitControls />
         <Trees />
-        <TreeModel position={[5, 0, 0]} />
+
         <Lights />
         <Ground />
       </Canvas>
