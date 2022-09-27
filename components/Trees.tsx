@@ -1,5 +1,6 @@
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useLoader } from "@react-three/fiber";
+import { Object3D } from "three";
 
 const Trees = () => {
   const model = useLoader(GLTFLoader, "./models/tree.glb");
@@ -9,7 +10,11 @@ const Trees = () => {
       object.castShadow = true;
     }
   });
-  return <primitive object={model.scene} />;
+  return (
+    <object3D position={[5, 3, 0]}>
+      <primitive object={model.scene} />;
+    </object3D>
+  );
 };
 
 export default Trees;
